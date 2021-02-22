@@ -24,7 +24,7 @@ namespace WebAtividadeEntrevista.Controllers
         {
             var bo = new BoCliente();
 
-            if (bo.VerificarExistencia(model.Cpf))
+            if (bo.VerificarExistencia(model.Cpf, model.Id))
                 ModelState.AddModelError("CPF", "Este CPF já está cadastrado");
 
             if (!ModelState.IsValid)
@@ -59,7 +59,7 @@ namespace WebAtividadeEntrevista.Controllers
         {
             var bo = new BoCliente();
 
-            if (bo.VerificarExistencia(model.Cpf))
+            if (bo.VerificarExistencia(model.Cpf, model.Id))
                 ModelState.AddModelError("CPF", "Este CPF já está cadastrado");
 
             if (!ModelState.IsValid)

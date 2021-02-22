@@ -55,7 +55,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// VerificaExistencia
         /// </summary>
         /// <param name="cpf">CPF do cliente</param>
-        public bool VerificarExistencia(string cpf, int idCliente)
+        public bool VerificarExistencia(string cpf, long idCliente)
         {
             return new DaoBeneficiario().VerificarExistencia(cpf, idCliente);
         }

@@ -36,7 +36,7 @@ namespace FI.AtividadeEntrevista.DAL.Beneficiario
         /// </summary>
         /// <param name="cpf">CPF do beneficiário</param>
         /// <param name="idCliente">Id do cliente do beneficiário</param>
-        internal bool VerificarExistencia(string cpf, int idCliente)
+        internal bool VerificarExistencia(string cpf, long idCliente)
         {
             var parametros = new List<SqlParameter>
             {
