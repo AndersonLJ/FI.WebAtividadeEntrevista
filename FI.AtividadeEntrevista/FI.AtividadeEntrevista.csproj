@@ -62,21 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BoBeneficiario.cs" />
     <Compile Include="BLL\BoCliente.cs" />
+    <Compile Include="DAL\Beneficiario\DaoBeneficiario.cs" />
     <Compile Include="DAL\Clientes\DaoCliente.cs" />
     <Compile Include="DAL\Padrao\FI.AcessoDados.cs" />
+    <Compile Include="DML\Beneficiario.cs" />
     <Compile Include="DML\Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_PesqCliente.sql" />
-    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_DelCliente.sql" />
-    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_ConsCliente.sql" />
-    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_AltCliente.sql" />
-    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_IncCliente.sql" />
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_PesqBeneficiario.sql" />
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_DelBeneficiario.sql" />
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_AltBeneficiario.sql" />
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_IncBeneficiario.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_VerificaCliente.sql" />
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_VerificaBeneficiario.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -89,6 +91,25 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_VerificaCliente.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_PesqCliente.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_IncCliente.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_DelCliente.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_ConsCliente.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_AltCliente.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

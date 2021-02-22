@@ -40,7 +40,7 @@ namespace FI.AtividadeEntrevista.DAL.Clientes
         }
 
         /// <summary>
-        /// Inclui um novo cliente
+        /// Consultar cliente
         /// </summary>
         /// <param name="id">Identificação do cliente</param>
         internal Cliente Consultar(long id)
