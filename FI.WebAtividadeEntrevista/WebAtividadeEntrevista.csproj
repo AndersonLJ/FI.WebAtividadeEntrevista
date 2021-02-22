@@ -190,6 +190,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClienteModel.cs" />
+    <Compile Include="Models\CustomValidationCPFAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +270,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Clientes\FI.AltClientes.js" />
+    <Content Include="Scripts\Clientes\FI.ConfigIMask.js" />
     <Content Include="Scripts\Clientes\FI.ListClientes.js" />
     <Content Include="Scripts\Clientes\FI.Clientes.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

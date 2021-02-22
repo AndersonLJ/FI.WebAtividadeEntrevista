@@ -1,7 +1,6 @@
 ﻿using FI.AtividadeEntrevista.BLL;
 using FI.AtividadeEntrevista.DML;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebAtividadeEntrevista.Models;
@@ -15,7 +14,6 @@ namespace WebAtividadeEntrevista.Controllers
             return View();
         }
 
-
         public ActionResult Incluir()
         {
             return View();
@@ -24,85 +22,81 @@ namespace WebAtividadeEntrevista.Controllers
         [HttpPost]
         public JsonResult Incluir(ClienteModel model)
         {
-            BoCliente bo = new BoCliente();
+            var bo = new BoCliente();
 
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                List<string> erros = (from item in ModelState.Values
+                var erros = (from item in ModelState.Values
                                       from error in item.Errors
                                       select error.ErrorMessage).ToList();
 
                 Response.StatusCode = 400;
                 return Json(string.Join(Environment.NewLine, erros));
             }
-            else
+
+            model.Id = bo.Incluir(new Cliente
             {
+                Cep = model.Cep,
+                Cidade = model.Cidade,
+                Email = model.Email,
+                Estado = model.Estado,
+                Logradouro = model.Logradouro,
+                Nacionalidade = model.Nacionalidade,
+                Nome = model.Nome,
+                Sobrenome = model.Sobrenome,
+                Telefone = model.Telefone,
+                Cpf = model.Cpf
+            });
 
-                model.Id = bo.Incluir(new Cliente()
-                {
-                    CEP = model.CEP,
-                    Cidade = model.Cidade,
-                    Email = model.Email,
-                    Estado = model.Estado,
-                    Logradouro = model.Logradouro,
-                    Nacionalidade = model.Nacionalidade,
-                    Nome = model.Nome,
-                    Sobrenome = model.Sobrenome,
-                    Telefone = model.Telefone
-                });
-
-
-                return Json("Cadastro efetuado com sucesso");
-            }
+            return Json("Cadastro efetuado com sucesso");
         }
 
         [HttpPost]
         public JsonResult Alterar(ClienteModel model)
         {
-            BoCliente bo = new BoCliente();
+            var bo = new BoCliente();
 
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                List<string> erros = (from item in ModelState.Values
-                                      from error in item.Errors
-                                      select error.ErrorMessage).ToList();
+                var erros = (from item in ModelState.Values
+                             from error in item.Errors
+                             select error.ErrorMessage).ToList();
 
                 Response.StatusCode = 400;
                 return Json(string.Join(Environment.NewLine, erros));
             }
-            else
-            {
-                bo.Alterar(new Cliente()
-                {
-                    Id = model.Id,
-                    CEP = model.CEP,
-                    Cidade = model.Cidade,
-                    Email = model.Email,
-                    Estado = model.Estado,
-                    Logradouro = model.Logradouro,
-                    Nacionalidade = model.Nacionalidade,
-                    Nome = model.Nome,
-                    Sobrenome = model.Sobrenome,
-                    Telefone = model.Telefone
-                });
 
-                return Json("Cadastro alterado com sucesso");
-            }
+            bo.Alterar(new Cliente
+            {
+                Id = model.Id,
+                Cep = model.Cep,
+                Cidade = model.Cidade,
+                Email = model.Email,
+                Estado = model.Estado,
+                Logradouro = model.Logradouro,
+                Nacionalidade = model.Nacionalidade,
+                Nome = model.Nome,
+                Sobrenome = model.Sobrenome,
+                Telefone = model.Telefone,
+                Cpf = model.Cpf
+            });
+
+            return Json("Cadastro alterado com sucesso");
         }
 
         [HttpGet]
         public ActionResult Alterar(long id)
         {
-            BoCliente bo = new BoCliente();
-            Cliente cliente = bo.Consultar(id);
-            Models.ClienteModel model = null;
+            var bo = new BoCliente();
+            var cliente = bo.Consultar(id);
+            ClienteModel model = null;
 
             if (cliente != null)
             {
-                model = new ClienteModel()
+                model = new ClienteModel
                 {
                     Id = cliente.Id,
-                    CEP = cliente.CEP,
+                    Cep = cliente.Cep,
                     Cidade = cliente.Cidade,
                     Email = cliente.Email,
                     Estado = cliente.Estado,
@@ -110,10 +104,9 @@ namespace WebAtividadeEntrevista.Controllers
                     Nacionalidade = cliente.Nacionalidade,
                     Nome = cliente.Nome,
                     Sobrenome = cliente.Sobrenome,
-                    Telefone = cliente.Telefone
+                    Telefone = cliente.Telefone,
+                    Cpf = cliente.Cpf
                 };
-
-
             }
 
             return View(model);
@@ -124,10 +117,10 @@ namespace WebAtividadeEntrevista.Controllers
         {
             try
             {
-                int qtd = 0;
-                string campo = string.Empty;
-                string crescente = string.Empty;
-                string[] array = jtSorting.Split(' ');
+                int qtd;
+                var campo = string.Empty;
+                var crescente = string.Empty;
+                var array = jtSorting?.Split(' ');
 
                 if (array.Length > 0)
                     campo = array[0];
@@ -135,14 +128,13 @@ namespace WebAtividadeEntrevista.Controllers
                 if (array.Length > 1)
                     crescente = array[1];
 
-                List<Cliente> clientes = new BoCliente().Pesquisa(jtStartIndex, jtPageSize, campo, crescente.Equals("ASC", StringComparison.InvariantCultureIgnoreCase), out qtd);
+                var clientes = new BoCliente().Pesquisa(jtStartIndex, jtPageSize, campo, crescente.Equals("ASC", StringComparison.InvariantCultureIgnoreCase), out qtd);
 
-                //Return result to jTable
                 return Json(new { Result = "OK", Records = clientes, TotalRecordCount = qtd });
             }
             catch (Exception ex)
             {
-                return Json(new { Result = "ERROR", Message = ex.Message });
+                return Json(new { Result = "ERROR", ex.Message });
             }
         }
     }

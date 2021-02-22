@@ -13,7 +13,7 @@
         /// <summary>
         /// CEP
         /// </summary>
-        public string CEP { get; set; }
+        public string Cep { get; set; }
 
         /// <summary>
         /// Cidade
@@ -54,5 +54,10 @@
         /// Telefone
         /// </summary>
         public string Telefone { get; set; }
+
+        /// <summary>
+        /// CPF
+        /// </summary>
+        public string Cpf { get; set; }
     }
 }
