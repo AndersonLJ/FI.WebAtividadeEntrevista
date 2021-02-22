@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FI.AtividadeEntrevista.DAL
+namespace FI.AtividadeEntrevista.DAL.Padrao
 {
     internal class AcessoDados
     {
@@ -15,21 +11,20 @@ namespace FI.AtividadeEntrevista.DAL
         {
             get
             {
-                ConnectionStringSettings conn = System.Configuration.ConfigurationManager.ConnectionStrings["BancoDeDados"];
-                if (conn != null)
-                    return conn.ConnectionString;
-                else
-                    return string.Empty;
+                var conn = ConfigurationManager.ConnectionStrings["BancoDeDados"];
+                return conn != null 
+                    ? conn.ConnectionString 
+                    : string.Empty;
             }
         }
 
-        internal void Executar(string NomeProcedure, List<SqlParameter> parametros)
+        internal void Executar(string nomeProcedure, List<SqlParameter> parametros)
         {
-            SqlCommand comando = new SqlCommand();
-            SqlConnection conexao = new SqlConnection(stringDeConexao);
+            var comando = new SqlCommand();
+            var conexao = new SqlConnection(stringDeConexao);
             comando.Connection = conexao;
-            comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.CommandText = NomeProcedure;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nomeProcedure;
             foreach (var item in parametros)
                 comando.Parameters.Add(item);
 
@@ -44,23 +39,23 @@ namespace FI.AtividadeEntrevista.DAL
             }
         }
 
-        internal DataSet Consultar(string NomeProcedure, List<SqlParameter> parametros)
+        internal DataSet Consultar(string nomeProcedure, List<SqlParameter> parametros)
         {
-            SqlCommand comando = new SqlCommand();
-            SqlConnection conexao = new SqlConnection(stringDeConexao);
+            var comando = new SqlCommand();
+            var conexao = new SqlConnection(stringDeConexao);
 
             comando.Connection = conexao;
-            comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.CommandText = NomeProcedure;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nomeProcedure;
             foreach (var item in parametros)
                 comando.Parameters.Add(item);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(comando);
-            DataSet ds = new DataSet();
+            var adapter = new SqlDataAdapter(comando);
+            var ds = new DataSet();
             conexao.Open();
 
             try
-            {               
+            {
                 adapter.Fill(ds);
             }
             finally
@@ -70,6 +65,5 @@ namespace FI.AtividadeEntrevista.DAL
 
             return ds;
         }
-
     }
 }

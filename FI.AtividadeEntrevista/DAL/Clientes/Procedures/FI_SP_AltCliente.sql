@@ -7,6 +7,7 @@
     @CIDADE        VARCHAR (50) ,
     @LOGRADOURO    VARCHAR (500),
     @EMAIL         VARCHAR (2079),
+	@CPF           VARCHAR (14),
     @TELEFONE      VARCHAR (15),
 	@Id           BIGINT
 AS
@@ -21,6 +22,7 @@ BEGIN
 		CIDADE = @CIDADE, 
 		LOGRADOURO = @LOGRADOURO, 
 		EMAIL = @EMAIL, 
-		TELEFONE = @TELEFONE
+		TELEFONE = @TELEFONE,
+		CPF = @CPF
 	WHERE Id = @Id
 END

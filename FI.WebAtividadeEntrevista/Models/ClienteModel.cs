@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebAtividadeEntrevista.Models
 {
@@ -12,17 +8,17 @@ namespace WebAtividadeEntrevista.Models
     public class ClienteModel
     {
         public long Id { get; set; }
-        
+
         /// <summary>
         /// CEP
         /// </summary>
-        [Required]
-        public string CEP { get; set; }
+        [Required(ErrorMessage = "Informe o CEP")]
+        public string Cep { get; set; }
 
         /// <summary>
         /// Cidade
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Informe a Cidade")]
         public string Cidade { get; set; }
 
         /// <summary>
@@ -34,32 +30,32 @@ namespace WebAtividadeEntrevista.Models
         /// <summary>
         /// Estado
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Informe o Estado")]
         [MaxLength(2)]
         public string Estado { get; set; }
 
         /// <summary>
         /// Logradouro
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Informe o Logradouro")]
         public string Logradouro { get; set; }
 
         /// <summary>
         /// Nacionalidade
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Informe a Nacionalidade")]
         public string Nacionalidade { get; set; }
 
         /// <summary>
         /// Nome
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Informe o Nome")]
         public string Nome { get; set; }
 
         /// <summary>
         /// Sobrenome
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Informe o Sobrenome")]
         public string Sobrenome { get; set; }
 
         /// <summary>
@@ -67,5 +63,11 @@ namespace WebAtividadeEntrevista.Models
         /// </summary>
         public string Telefone { get; set; }
 
-    }    
+        /// <summary>
+        /// CPF
+        /// </summary>
+        [Required(ErrorMessage = "Informe o CPF")]
+        [CustomValidationCpf(ErrorMessage = "CPF inválido")]
+        public string Cpf { get; set; }
+    }
 }
