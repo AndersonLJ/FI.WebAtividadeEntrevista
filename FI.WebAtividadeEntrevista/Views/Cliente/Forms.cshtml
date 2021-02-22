@@ -32,17 +32,13 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="Cep">CEP:</label>
-                <input required="required" type="text" class="form-control" id="Cep" name="Cep" placeholder="Ex.: 01011-100" maxlength="9">
+                <input required="required" type="text" class="form-control" id="Cep" name="Cep" placeholder="Ex.: 01011-100" maxlength="9" onblur="pesquisa_cep(this.value);">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="Estado">Estado:</label>
-                <select required="required" id="Estado" class="form-control" name="Estado">
-                    <option value="">Selecione</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="PE">Pernambuco</option>
-                </select>
+                <input required="required" type="text" class="form-control" id="Estado" name="Estado" maxlength="50" placeholder="Ex.: São Paulo">
             </div>
         </div>
         <div class="col-md-4">

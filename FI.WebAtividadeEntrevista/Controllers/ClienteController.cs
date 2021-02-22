@@ -24,6 +24,9 @@ namespace WebAtividadeEntrevista.Controllers
         {
             var bo = new BoCliente();
 
+            if (bo.VerificarExistencia(model.Cpf))
+                ModelState.AddModelError("CPF", "Este CPF já está cadastrado");
+
             if (!ModelState.IsValid)
             {
                 var erros = (from item in ModelState.Values
@@ -55,6 +58,9 @@ namespace WebAtividadeEntrevista.Controllers
         public JsonResult Alterar(ClienteModel model)
         {
             var bo = new BoCliente();
+
+            if (bo.VerificarExistencia(model.Cpf))
+                ModelState.AddModelError("CPF", "Este CPF já está cadastrado");
 
             if (!ModelState.IsValid)
             {

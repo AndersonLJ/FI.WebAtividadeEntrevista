@@ -67,7 +67,7 @@ namespace FI.AtividadeEntrevista.DAL.Clientes
                 new SqlParameter("CPF", cpf)
             };
 
-            var ds = base.Consultar("FI_SP_VerificaCliente", parametros);
+            var ds = Consultar("FI_SP_VerificaCliente", parametros);
 
             return ds.Tables[0].Rows.Count > 0;
         }
