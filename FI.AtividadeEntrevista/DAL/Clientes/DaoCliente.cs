@@ -40,7 +40,7 @@ namespace FI.AtividadeEntrevista.DAL.Clientes
         }
 
         /// <summary>
-        /// Inclui um novo cliente
+        /// Consultar cliente
         /// </summary>
         /// <param name="id">Identificação do cliente</param>
         internal Cliente Consultar(long id)
@@ -60,11 +60,12 @@ namespace FI.AtividadeEntrevista.DAL.Clientes
         /// Verificar se CPF está cadastrado
         /// </summary>
         /// <param name="cpf">CPF do cliente</param>
-        internal bool VerificarExistencia(string cpf)
+        internal bool VerificarExistencia(string cpf, long id)
         {
             var parametros = new List<SqlParameter>
             {
-                new SqlParameter("CPF", cpf)
+                new SqlParameter("CPF", cpf),
+                new SqlParameter("ID", id)
             };
 
             var ds = Consultar("FI_SP_VerificaCliente", parametros);

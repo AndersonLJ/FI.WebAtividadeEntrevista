@@ -12,8 +12,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// <param name="cliente">Objeto de cliente</param>
         public long Incluir(Cliente cliente)
         {
-            var cli = new DaoCliente();
-            return cli.Incluir(cliente);
+            return new DaoCliente().Incluir(cliente);
         }
 
         /// <summary>
@@ -22,8 +21,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// <param name="cliente">Objeto de cliente</param>
         public void Alterar(Cliente cliente)
         {
-            var cli = new DaoCliente();
-            cli.Alterar(cliente);
+            new DaoCliente().Alterar(cliente);
         }
 
         /// <summary>
@@ -33,8 +31,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// <returns></returns>
         public Cliente Consultar(long id)
         {
-            var cli = new DaoCliente();
-            return cli.Consultar(id);
+            return new DaoCliente().Consultar(id);
         }
 
         /// <summary>
@@ -44,8 +41,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// <returns></returns>
         public void Excluir(long id)
         {
-            var cli = new DaoCliente();
-            cli.Excluir(id);
+            new DaoCliente().Excluir(id);
         }
 
         /// <summary>
@@ -53,8 +49,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// </summary>
         public List<Cliente> Listar()
         {
-            var cli = new DaoCliente();
-            return cli.Listar();
+            return new DaoCliente().Listar();
         }
 
         /// <summary>
@@ -62,19 +57,18 @@ namespace FI.AtividadeEntrevista.BLL
         /// </summary>
         public List<Cliente> Pesquisa(int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
         {
-            var cli = new DaoCliente();
-            return cli.Pesquisa(iniciarEm, quantidade, campoOrdenacao, crescente, out qtd);
+            return new DaoCliente().Pesquisa(iniciarEm, quantidade, campoOrdenacao, crescente, out qtd);
         }
 
         /// <summary>
         /// VerificaExistencia
         /// </summary>
         /// <param name="cpf">CPF do cliente</param>
+        /// <param name="id">Identificado do cliente</param>
         /// <returns></returns>
-        public bool VerificarExistencia(string cpf)
+        public bool VerificarExistencia(string cpf, long id)
         {
-            var cli = new DaoCliente();
-            return cli.VerificarExistencia(cpf);
+            return new DaoCliente().VerificarExistencia(cpf, id);
         }
     }
 }

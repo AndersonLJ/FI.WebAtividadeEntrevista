@@ -27,7 +27,7 @@
             }
         });
 
-    //Load student list from server
+    //Load clientes list from server
     if (document.getElementById("gridClientes"))
         $('#gridClientes').jtable('load');
 })

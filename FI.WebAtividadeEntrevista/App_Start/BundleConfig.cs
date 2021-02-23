@@ -27,7 +27,7 @@ namespace WebAtividadeEntrevista
 
             bundles.Add(new ScriptBundle("~/bundles/clientes").Include(
                       "~/Scripts/Clientes/FI.Clientes.js",
-                      "~/Scripts/Clientes/FI.ConfigIMask.js",
+                      "~/Scripts/Clientes/FI.MaskClientes.js",
                       "~/Scripts/Clientes/FI.ConsultarCep.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/listClientes").Include(
@@ -35,8 +35,10 @@ namespace WebAtividadeEntrevista
 
             bundles.Add(new ScriptBundle("~/bundles/altClientes").Include(
                       "~/Scripts/Clientes/FI.AltClientes.js",
-                      "~/Scripts/Clientes/FI.ConfigIMask.js",
-                      "~/Scripts/Clientes/FI.ConsultarCep.js"));
+                      "~/Scripts/Clientes/FI.MaskClientes.js",
+                      "~/Scripts/Clientes/FI.ConsultarCep.js",
+                      "~/Scripts/Beneficiarios/FI.Beneficiarios.js",
+                      "~/Scripts/Beneficiarios/FI.MaskBeneficiarios.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
