@@ -31,7 +31,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// <param name="id">id do beneficiário</param>
         public void Excluir(long id)
         {
-            new DaoCliente().Excluir(id);
+            new DaoBeneficiario().Excluir(id);
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace FI.AtividadeEntrevista.BLL
         /// VerificaExistencia
         /// </summary>
         /// <param name="cpf">CPF do cliente</param>
-        public bool VerificarExistencia(string cpf, long idCliente)
+        public bool VerificarExistencia(string cpf, long idCliente, long id)
         {
-            return new DaoBeneficiario().VerificarExistencia(cpf, idCliente);
+            return new DaoBeneficiario().VerificarExistencia(cpf, idCliente, id);
         }
     }
 }

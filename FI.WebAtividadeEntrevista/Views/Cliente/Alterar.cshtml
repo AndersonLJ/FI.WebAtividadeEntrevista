@@ -10,7 +10,9 @@
         var obj = @Html.Raw(Json.Encode(Model));
         var urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
 
-        var urlPostBeneficiario = '@Url.Action("Incluir", "Beneficiario", new { idCliente = Model.Id, area = "" })';
+        var urlIncluirBeneficiario = '@Url.Action("Incluir", "Beneficiario", new { idCliente = Model.Id, area = "" })';
+        var urlAlterarBeneficiario = '@Url.Action("Alterar", "Beneficiario", new { idCliente = Model.Id, area = "" })';
+        var urlRemoverBeneficiario = '@Url.Action("Excluir", "Beneficiario", new { area = "" })';
         var urlRetornoBeneficiario = '@Url.Action("BeneficiarioList", "Beneficiario", new { idCliente = Model.Id, area = ""})';
     </script>
     @Scripts.Render("~/bundles/altClientes")

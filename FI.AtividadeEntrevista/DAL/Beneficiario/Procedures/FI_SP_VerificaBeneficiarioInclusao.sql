@@ -1,4 +1,4 @@
-﻿CREATE PROC FI_SP_VerificaBeneficiario
+﻿CREATE PROC FI_SP_VerificaBeneficiarioInclusao
 	@CPF VARCHAR(14),
 	@IDCLIENTE BIGINT
 AS

@@ -78,7 +78,7 @@
     <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_IncBeneficiario.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_VerificaBeneficiario.sql" />
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_VerificaBeneficiarioAlteracao.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -92,7 +92,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\Beneficiario\Procedures\FI_SP_VerificaBeneficiarioInclusao.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_VerificaCliente.sql" />
   </ItemGroup>

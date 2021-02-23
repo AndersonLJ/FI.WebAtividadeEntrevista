@@ -14,7 +14,7 @@ namespace WebAtividadeEntrevista.Controllers
         {
             var bo = new BoBeneficiario();
 
-            if (bo.VerificarExistencia(model.Cpf, model.IdCliente))
+            if (bo.VerificarExistencia(model.Cpf, model.IdCliente, model.Id))
                 ModelState.AddModelError("CPF", "Este CPF já está cadastrado neste cliente");
 
             if (!ModelState.IsValid)
@@ -42,7 +42,7 @@ namespace WebAtividadeEntrevista.Controllers
         {
             var bo = new BoBeneficiario();
 
-            if (bo.VerificarExistencia(model.Cpf, model.IdCliente))
+            if (bo.VerificarExistencia(model.Cpf, model.IdCliente, model.Id))
                 ModelState.AddModelError("CPF", "Este CPF já está cadastrado neste cliente");
 
             if (!ModelState.IsValid)
@@ -64,6 +64,25 @@ namespace WebAtividadeEntrevista.Controllers
             });
 
             return Json("Cadastro alterado com sucesso");
+        }
+
+        [HttpPost]
+        public JsonResult Excluir(int id)
+        {
+            try
+            {
+                var bo = new BoBeneficiario();
+                bo.Excluir(id);
+
+                Response.StatusCode = 200;
+                return Json("Beneficiário removido com sucesso");
+            }
+            catch (Exception e)
+            {
+                Response.StatusCode = 400;
+                return Json(e.Message);
+            }
+           
         }
 
         [HttpPost]

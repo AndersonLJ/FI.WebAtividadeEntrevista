@@ -36,15 +36,22 @@ namespace FI.AtividadeEntrevista.DAL.Beneficiario
         /// </summary>
         /// <param name="cpf">CPF do beneficiário</param>
         /// <param name="idCliente">Id do cliente do beneficiário</param>
-        internal bool VerificarExistencia(string cpf, long idCliente)
+        internal bool VerificarExistencia(string cpf, long idCliente, long id)
         {
             var parametros = new List<SqlParameter>
             {
                 new SqlParameter("CPF", cpf),
-                new SqlParameter("IDCLIENTE", idCliente)
+                new SqlParameter("IDCLIENTE", idCliente),
             };
 
-            var ds = Consultar("FI_SP_VerificaBeneficiario", parametros);
+            DataSet ds;
+            if (id == 0)
+                ds = Consultar("FI_SP_VerificaBeneficiarioInclusao", parametros);
+            else
+            {
+                parametros.Add(new SqlParameter("Id", id));
+                ds = Consultar("FI_SP_VerificaBeneficiarioAlteracao", parametros);
+            }
 
             return ds.Tables[0].Rows.Count > 0;
         }
