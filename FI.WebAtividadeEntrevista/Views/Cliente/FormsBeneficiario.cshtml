@@ -6,42 +6,38 @@
                 <h4 class="modal-title">Beneficiários</h4>
             </div>
             <div class="modal-body">
+                <form id="formBeneficiario" method="post">
+                    <div class="row">
+                        <div class="col-md-12" id="alertBeneficiario">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="CpfBeneficiario">CPF:</label>
+                            <input type="text" class="form-control" id="CpfBeneficiario" name="CpfBeneficiario" placeholder="Ex: 010.011.111-00" required/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="NomeBeneficiario">Nome:</label>
+                            <input type="text" class="form-control" id="NomeBeneficiario" name="NomeBeneficiario" placeholder="Ex: João da Silva" required/>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" id="incluirBeneficiario" class="btn btn-success" style="margin-top: 25px">Incluir</button>
+                        </div>
+                    </div>
+                </form>
                 <div class="row">
-                    <div class="col-md-4">
-                        <label for="CpfBeneficiario">CPF:</label>
-                        <input type="text" class="form-control" id="CpfBeneficiario" name="CpfBeneficiario" placeholder="Ex: 010.011.111-00" />
-                    </div>
-                    <div class="col-md-6">
-                        <label for="NomeBeneficiario">Nome:</label>
-                        <input type="text" class="form-control" id="NomeBeneficiario" name="NomeBeneficiario" placeholder="Ex: João da Silva" />
-                    </div>
-                    <div class="col-md-2">
-                        <button id="incluirBeneficiario" class="btn btn-success" style="margin-top: 25px">Incluir</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="margin-top: 15px;">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>CPF</th>
                                     <th>Nome</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th style="width: 10%"></th>
+                                    <th style="width: 10%"></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Teste</td>
-                                    <td>Teste</td>
-                                    <td style="width: 10%">
-                                        <button class="btn btn-primary">Alterar</button>
-                                    </td>
-                                    <td style="width: 10%">
-                                        <button class="btn btn-danger">Excluir</button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="listBeneficiarios"></tbody>
                         </table>
                     </div>
                 </div>

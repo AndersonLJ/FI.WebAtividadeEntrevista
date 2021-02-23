@@ -46,9 +46,9 @@ namespace FI.AtividadeEntrevista.BLL
         /// <summary>
         /// Lista os beneficiários
         /// </summary>
-        public List<Beneficiario> Pesquisa(int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
+        public List<Beneficiario> Pesquisa(int idCliente)
         {
-            return new DaoBeneficiario().Pesquisa(iniciarEm, quantidade, campoOrdenacao, crescente, out qtd);
+            return new DaoBeneficiario().Pesquisa(idCliente);
         }
 
         /// <summary>

@@ -9,10 +9,13 @@
         var urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
         var obj = @Html.Raw(Json.Encode(Model));
         var urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+
+        var urlPostBeneficiario = '@Url.Action("Incluir", "Beneficiario", new { idCliente = Model.Id, area = "" })';
+        var urlRetornoBeneficiario = '@Url.Action("BeneficiarioList", "Beneficiario", new { idCliente = Model.Id, area = ""})';
     </script>
     @Scripts.Render("~/bundles/altClientes")
 }
 
 <h2>@Html.Raw(ViewBag.Title)</h2>
 @Html.Partial("Forms")
-@*@Html.Partial("FormsBeneficiario")*@
+@Html.Partial("FormsBeneficiario")

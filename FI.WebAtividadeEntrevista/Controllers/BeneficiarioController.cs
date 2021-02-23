@@ -9,11 +9,6 @@ namespace WebAtividadeEntrevista.Controllers
 {
     public class BeneficiarioController : Controller
     {
-        public ActionResult Incluir()
-        {
-            return View();
-        }
-
         [HttpPost]
         public JsonResult Incluir(BeneficiarioModel model)
         {
@@ -72,24 +67,13 @@ namespace WebAtividadeEntrevista.Controllers
         }
 
         [HttpPost]
-        public JsonResult BeneficiarioList(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult BeneficiarioList(int idCliente)
         {
             try
             {
-                int qtd;
-                var campo = string.Empty;
-                var crescente = string.Empty;
-                var array = jtSorting?.Split(' ');
+                var beneficiarios = new BoBeneficiario().Pesquisa(idCliente);
 
-                if (array.Length > 0)
-                    campo = array[0];
-
-                if (array.Length > 1)
-                    crescente = array[1];
-
-                var clientes = new BoCliente().Pesquisa(jtStartIndex, jtPageSize, campo, crescente.Equals("ASC", StringComparison.InvariantCultureIgnoreCase), out qtd);
-
-                return Json(new { Result = "OK", Records = clientes, TotalRecordCount = qtd });
+                return Json(new { Result = "OK", Records = beneficiarios });
             }
             catch (Exception ex)
             {

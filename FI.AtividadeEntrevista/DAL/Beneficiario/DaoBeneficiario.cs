@@ -49,25 +49,15 @@ namespace FI.AtividadeEntrevista.DAL.Beneficiario
             return ds.Tables[0].Rows.Count > 0;
         }
 
-        internal List<DML.Beneficiario> Pesquisa(int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
+        internal List<DML.Beneficiario> Pesquisa(int idCliente)
         {
             var parametros = new List<SqlParameter>
             {
-                new SqlParameter("iniciarEm", iniciarEm),
-                new SqlParameter("quantidade", quantidade),
-                new SqlParameter("campoOrdenacao", campoOrdenacao),
-                new SqlParameter("crescente", crescente)
+                new SqlParameter("IDCLIENTE", idCliente),
             };
 
             var ds = Consultar("FI_SP_PesqBeneficiario", parametros);
             var beneficiarios = Converter(ds);
-
-            var iQtd = 0;
-
-            if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0)
-                int.TryParse(ds.Tables[1].Rows[0][0].ToString(), out iQtd);
-
-            qtd = iQtd;
 
             return beneficiarios;
         }
